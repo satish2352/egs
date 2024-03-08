@@ -46,14 +46,14 @@ class LoginController extends Controller
         $rules = [
             'email' => 'required | email', 
             'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
+            // 'g-recaptcha-response' => 'required|captcha',
             ];
         $messages = [   
             'email.required' => 'Please Enter Email.',
             'email.email' => 'Please Enter a Valid Email Address.',
             'password.required' => 'Please Enter Password.',
-            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
-            'g-recaptcha-response.required' =>'Please verify that you are not a robot.',
+            // 'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+            // 'g-recaptcha-response.required' =>'Please verify that you are not a robot.',
         ];
     
         try {

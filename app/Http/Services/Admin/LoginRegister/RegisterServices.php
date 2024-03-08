@@ -24,7 +24,7 @@ class RegisterServices
 
     public function index() {
         $data_users = $this->repo->getUsersList();
-        dd($data_users);
+        // dd($data_users);
         return $data_users;
     }
 

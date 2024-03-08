@@ -56,6 +56,7 @@ class LoginRepository
 
             $data['user_permission'] = $roles_permissions ;
         }
+        // dd($data);
         return $data;
     }
 }
