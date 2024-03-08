@@ -64,35 +64,7 @@
                           </ul>
                       </div>
                   </li>
-              {{-- @endif
-              @if (in_array('list-landing-slide', $data_for_url) ||
-              in_array('list-landing-content', $data_for_url)) --}}
-              <li  class="{{request()->is('list-landing-slide*') 
-                ? 'nav-item active' : 'nav-item' }}">
-                  <a class="nav-link" data-toggle="collapse" href="#landing-slider" aria-expanded="false"
-                      aria-controls="landing-slider">
-                      <i class="fas fa-newspaper fa-lg "></i>
-                      <span class="pl-2 menu-title">Landing</span>
-                      <i class="menu-arrow"></i>
-                  </a>
-                  <div class="collapse" id="landing-slider">
-                      <ul class="nav flex-column sub-menu">
-                          {{-- @if (in_array('list-landing-slide', $data_for_url)) --}}
-                              <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                                      href="{{ route('list-landing-slide') }}">Landing Slider</a>
-                              </li>
-                          {{-- @endif --}}
-                          {{-- @if (in_array('list-landing-content', $data_for_url)) --}}
-                              <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                                      href="{{ route('list-landing-content') }}">Landing Content</a>
-                              </li>
-                          {{-- @endif --}}
-                          
-                      </ul>
-                  </div>
-              </li>
-        {{-- @if (in_array('list-users', $data_for_url)) --}}
-
+             {{-- @endif --}}
         <li class="{{request()->is('list-users*')
 
             ? 'nav-item active' : 'nav-item' }}">
