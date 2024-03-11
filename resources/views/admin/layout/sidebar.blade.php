@@ -56,6 +56,16 @@
                                     ? 'nav-link active' : 'nav-link' }}"
                                           href="{{ route('list-role') }}">Role</a></li>
                               {{-- @endif --}}
+                              {{-- @if (in_array('list-gender', $data_for_url)) --}}
+                                  <li class="nav-item d-none d-lg-block"><a class="{{request()->is('list-gender*') 
+                                    ? 'nav-link active' : 'nav-link' }}"
+                                          href="{{ route('list-gender') }}">Gender</a></li>
+                              {{-- @endif --}}
+                              {{-- @if (in_array('list-maritalstatus', $data_for_url)) --}}
+                                  <li class="nav-item d-none d-lg-block"><a class="{{request()->is('list-maritalstatus*') 
+                                    ? 'nav-link active' : 'nav-link' }}"
+                                          href="{{ route('list-maritalstatus') }}">Marital Status</a></li>
+                              {{-- @endif --}}
                               {{-- @if (in_array('list-incident-type', $data_for_url)) --}}
                                   <li class="nav-item d-none d-lg-block"><a class="{{request()->is('list-incident-type*') 
                                     ? 'nav-link active' : 'nav-link' }}"
