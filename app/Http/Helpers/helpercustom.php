@@ -227,33 +227,58 @@ function getPermissionForCRUDPresentOrNot($url,$data_for_session) {
 // }
 
 
+// function uploadImage($request, $image_name, $path, $name) {
+
+//     // if (!file_exists(storage_path().$path)) {
+//     //     File::makeDirectory(storage_path().'/'.$path,0777,true);
+//     // }
+//     // if($request->$image_name !== null) {
+//     //     $base64_encoded = base64_encode(file_get_contents($request->$image_name)); 
+//     //     $base64_decoded_content = base64_decode($base64_encoded);
+//     //     $path2 = storage_path().$path.$name;
+//     //     file_put_contents($path2, $base64_decoded_content);
+//     // }
+
+
+//     $filePath = $path.$name;
+//     $path = Storage::disk('s3')->put($filePath, file_get_contents($request->$image_name));
+//     $path = Storage::disk('s3')->url($path);
+
+// }
+
+// function removeImage($path) {
+//     return Storage::disk('s3')->delete($path);
+// }
+
+// function file_exists_s3($path) {
+//     return Storage::disk('s3')->exists($path);
+// }
+
+
+
 function uploadImage($request, $image_name, $path, $name) {
+    // Check if the directory exists, create it if not
+    if (!file_exists(storage_path($path))) {
+        mkdir(storage_path($path), 0777, true);
+    }
 
-    // if (!file_exists(storage_path().$path)) {
-    //     File::makeDirectory(storage_path().'/'.$path,0777,true);
-    // }
-    // if($request->$image_name !== null) {
-    //     $base64_encoded = base64_encode(file_get_contents($request->$image_name)); 
-    //     $base64_decoded_content = base64_decode($base64_encoded);
-    //     $path2 = storage_path().$path.$name;
-    //     file_put_contents($path2, $base64_decoded_content);
-    // }
-
-
-    $filePath = $path.$name;
-    $path = Storage::disk('s3')->put($filePath, file_get_contents($request->$image_name));
-    $path = Storage::disk('s3')->url($path);
-
+    if ($request->hasFile($image_name)) {
+        // Save the file locally
+        $request->file($image_name)->move(storage_path($path), $name);
+    }
 }
 
 function removeImage($path) {
-    return Storage::disk('s3')->delete($path);
+    // Delete the file locally
+    if (file_exists(storage_path($path))) {
+        unlink(storage_path($path));
+    }
 }
 
-function file_exists_s3($path) {
-    return Storage::disk('s3')->exists($path);
+function file_exists_view($path) {
+    // Check if the file exists locally
+    return file_exists(storage_path($path));
 }
-
 // function getTempratureFromAPI() {
 //     $return_data = array();
 //     $url = env('TEMPRATURE_API_URL');
